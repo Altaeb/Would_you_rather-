@@ -8,6 +8,7 @@ import NotFound from "./NotFoun";
 import AnswerCard from "./AnswerCard";
 import ResultCard from "./ResultCard";
 import AddQuestion from "./AddQuestion";
+import LeaderBoard from "./LeaderBoard";
 
 class App extends React.Component {
   componentDidMount() {
@@ -25,6 +26,7 @@ class App extends React.Component {
               <Route path="/answerquestion/:id" component={AnswerCard} />
               <Route path="/answerresults/:id" component={ResultCard} />
               <Route path="/addquestion" exact component={AddQuestion} />
+              <Route path="/leaderBoard" exact component={LeaderBoard} />
               <Route component={NotFound} />
             </Switch>
           </div>
