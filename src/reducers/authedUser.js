@@ -1,10 +1,10 @@
-import { combineReducers } from "redux";
-import authedUser from "./authedUser";
-import users from "./users";
-import questions from "./questions";
+import { SET_AUTHED_USER } from "../actions/authedUser";
 
-export default combineReducers({
-  authedUser,
-  users,
-  questions
-});
+export default function authedUser(state = null, action) {
+  switch (action.type) {
+    case SET_AUTHED_USER:
+      return action.id;
+    default:
+      return state;
+  }
+}

@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 
 class Nav extends React.Component {
   render() {
+    const { authedUser, history } = this.props;
+    if (authedUser === null) {
+      // history.push("/");
+    }
     return (
       <Fragment>
         <div className="ui secondary pointing menu">
@@ -23,4 +27,6 @@ class Nav extends React.Component {
   }
 }
 
-export default Nav;
+export default connect(({ authedUser }) => {
+  return { authedUser };
+})(Nav);
