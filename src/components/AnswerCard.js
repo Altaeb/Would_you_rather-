@@ -6,17 +6,20 @@ import { withRouter } from "react-router-dom";
 
 class AnswerCard extends React.Component {
   state = {
-    answerOption: "optionOne"
+    answerOption: "",
+    error: true
   };
 
   handleOptionChange = option => {
     this.setState({
-      answerOption: option
+        answerOption: option,
+        error: false
     });
   };
 
   handleSubmit = e => {
     e.preventDefault();
+
     const { answerOption } = this.state;
     const {
       authedUser,
@@ -24,6 +27,11 @@ class AnswerCard extends React.Component {
         params: { id }
       }
     } = this.props;
+    
+    if (answerOption.trim() === "") {
+        return;
+      }
+
     console.log("before dispatch");
     this.props.dispatch(handleAnswerQuestion(id, answerOption, authedUser));
     this.props.history.push(`/answerresults/${id}`);
@@ -53,7 +61,9 @@ class AnswerCard extends React.Component {
                 src={author.avatarURL}
               />
               <div className="header">{author.name}</div>
-              <div className="meta">Asks: Would you rather : </div>
+              <div className="meta">
+                <h4>Asks: Would you rather : </h4>
+              </div>
               <div className="description">
                 {question && (
                   <div>
@@ -63,7 +73,7 @@ class AnswerCard extends React.Component {
                         name="answer"
                         value="optionOne"
                         onChange={e => this.handleOptionChange(e.target.value)}
-                      />
+                    />{" "}
                       {question.optionOne.text}
                     </h3>
                     <h5> OR </h5>
@@ -73,7 +83,7 @@ class AnswerCard extends React.Component {
                         name="answer"
                         value="optionTwo"
                         onChange={e => this.handleOptionChange(e.target.value)}
-                      />
+                    />{" "}
                       {question.optionTwo.text} ?
                     </h3>{" "}
                     <br />
@@ -84,12 +94,13 @@ class AnswerCard extends React.Component {
               <div className="extra content">
                 <div className="ui two buttons">
                   {question && (
-                    <div
+                   <button
+                    disabled={this.state.error}
                       className="ui basic green button"
                       to={`/answerCard/${question.id}`}
                     >
                       <div onClick={e => this.handleSubmit(e)}>Submit</div>
-                    </div>
+                   </button>
                   )}
                 </div>
               </div>
