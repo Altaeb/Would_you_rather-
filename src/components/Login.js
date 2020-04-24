@@ -10,20 +10,12 @@ class Login extends React.Component {
       state = {
         LogedUser: ""
       };
-      componentDidMount() {
-    // check if user is already authenticated redirect to Home screen
-    const { authedUser } = this.props;
-    console.log(this.props);
-    if (authedUser !== null) {
-      this.props.history.push("/home");
-    }
-      }
+     
     
       handleLogin = (e, id) => {
         e.preventDefault();
         console.log(id);
         this.props.dispatch(authenticate(id));
-        // this.props.history.push("/home");
       };
   render() {
     const { users } = this.props;

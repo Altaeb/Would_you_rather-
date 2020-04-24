@@ -2,8 +2,7 @@ import React from "react";
 import Nav from "./Nav";
 import { connect } from "react-redux";
 import { handleAnswerQuestion } from "../actions/questions";
-import { withRouter } from "react-router-dom";
-import { dispatch } from "rxjs/internal/observable/pairs";
+import { withRouter, Redirect } from "react-router-dom";
 
 class AnswerCard extends React.Component {
   state = {
@@ -48,7 +47,8 @@ class AnswerCard extends React.Component {
   };
 
   render() {
-    const { question, author } = this.props;
+    const { question, author, falidID } = this.props;
+    if (!falidID) return <Redirect to="/questions/qid_not_exist" />;
     return (
       <React.Fragment>
         <Nav />
@@ -63,7 +63,11 @@ class AnswerCard extends React.Component {
         >
           <div
             className="card"
-            style={{ width: "60vw", marginLeft: "10vw", marginRight: "-10vw" }}
+            style={{
+                width: "60vw",
+                marginLeft: "10vw",
+                marginRight: "-10vw"
+              }}
           >
             <div className="content">
               <img
@@ -131,7 +135,9 @@ class AnswerCard extends React.Component {
 export default withRouter(
   connect(({ authedUser, questions, users }, props) => {
     const { id } = props.match.params;
+    const falidID = questions && Object.keys(questions).includes(id);
     return {
+      falidID,
       question: questions && questions[id],
       author:
         (users !== null) & (questions !== null) && questions[id]

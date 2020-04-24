@@ -24,12 +24,12 @@ class App extends React.Component {
         ) : (
           <div className="App">
             <Switch>
-              <Route path="/" exact component={Login} />
-              <Route path="/home" component={Home} />
+              <Route path="/" exact component={Home} />
+              <Route path="/questions/qid_not_exist" component={NotFound} />
               <Route path="/questions/:id" component={AnswerCard} />
               <Route path="/answerresults/:id" component={ResultCard} />
-              <Route path="/home" component={Home} />
-              <Route path="/questions/:id" component={AnswerCard} />
+              <Route path="/addquestion" exact component={AddQuestion} />
+              <Route path="/leaderBoard" exact component={LeaderBoard} />
               <Route component={NotFound} />
             </Switch>
           </div>
