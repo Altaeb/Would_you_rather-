@@ -18,7 +18,7 @@ class Nav extends React.Component {
   };
 
   render() {
-    const { authedUser, history } = this.props;
+    const { authedUser, users } = this.props;
 
     return (
       <Fragment>
@@ -38,10 +38,10 @@ class Nav extends React.Component {
               Logout
             </div>
             <div>
-              {authedUser && authedUser.name}
+            {authedUser !== null && users[authedUser].name}
               <img
                 className="ui  avatar image "
-                src={authedUser && authedUser.avatarURL}
+                src={authedUser !== null && users[authedUser].avatarURL}
               />
             </div>
           </div>
@@ -53,6 +53,6 @@ class Nav extends React.Component {
 
 export default withRouter(
   connect(({ authedUser, users }) => {
-    return { authedUser };
+    rreturn { authedUser, users };
   })(Nav)
 );

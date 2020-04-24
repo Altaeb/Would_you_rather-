@@ -4,9 +4,11 @@ import Nav from "./Nav";
 
 class ResultCard extends React.Component {
   render() {
-    const { question, users, author, authedUser } = this.props;
+    const { questions, users, authedUser } = this.props;
     const { id } = this.props.match.params;
+    const question = questions && questions[id];
 
+    const author = question && users[question.author];
     let optionOneVotes = 0;
     let optionTwoVotes = 0;
     let optionOnePercentage = 0;
@@ -141,11 +143,10 @@ class ResultCard extends React.Component {
 function mapStateToProps() {}
 
 export default connect(({ authedUser, questions, users }, props) => {
-  const { id } = props.match.params;
+
   return {
-    question: questions ? questions[id] : null,
+    questions,
     users: users ? users : null,
-    author: users && questions[id] ? users[questions[id].author] : null,
-    authedUser: authedUser ? authedUser : null
+    authedUser: authedUser
   };
 })(ResultCard);
