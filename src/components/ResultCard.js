@@ -55,7 +55,9 @@ class ResultCard extends React.Component {
                   <div className="ui raised segment">
                     <div style={{ paddingLeft: "1vw" }}>
                       {authedUserAnswer === "optionOne" && (
-                        <a class="ui teal right ribbon label">Your Answer</a>
+                     <a className="ui teal right ribbon label">
+                          Your Answer
+                     </a>
                       )}
                       <h3>
                         <span>{question && question.optionOne.text}</span>
@@ -94,7 +96,7 @@ class ResultCard extends React.Component {
                 <div className="ui raised segment">
                   <div style={{ paddingLeft: "1vw" }}>
                     {authedUserAnswer === "optionTwo" && (
-                      <a class="ui teal right ribbon label">Your Answer</a>
+                     <a className="ui teal right ribbon label">Your Answer</a>
                     )}
                     <h3>
                       <span>{question && question.optionTwo.text}</span>

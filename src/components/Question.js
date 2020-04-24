@@ -17,7 +17,9 @@ class Question extends React.Component {
               src={auther.avatarURL}
             />
             <div className="header">{auther.name}</div>
-            <div className="meta">Asks: Would you rather : </div>
+            <div className="meta">
+              <h4>Asks: Would you rather : </h4>
+            </div>
             <div className="description">
             <h3>{question.optionOne.text} </h3> <h5> OR </h5>
               <h3>{question.optionTwo.text} ?</h3> <br />
