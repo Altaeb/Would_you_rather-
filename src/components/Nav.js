@@ -10,9 +10,12 @@ class Nav extends React.Component {
             Home
           </Link>
           <Link className="item">Add Question</Link>
-          <Link className="item active">LeaderBoard</Link>
-          <div className="right menu">
+          <Link className="item active">Leader Board</Link>
+
+          <div className="right item">
             <Link className="ui item">Logout</Link>
+            Elliot
+            <img className="ui  avatar image " src="avatars/sarahedo.png" />
           </div>
         </div>
       </Fragment>
