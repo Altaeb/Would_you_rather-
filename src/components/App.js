@@ -16,9 +16,12 @@ class App extends React.Component {
   }
 
   render() {
+    const { authedUser } = this.props;
     return (
-      <Fragment>
-        <Router>
+      <Router>
+        {authedUser === null ? (
+          <Route render={() => <Login />} />
+        ) : (
           <div className="App">
             <Switch>
               <Route path="/" exact component={Login} />
@@ -30,10 +33,12 @@ class App extends React.Component {
               <Route component={NotFound} />
             </Switch>
           </div>
+        )}
         </Router>
-      </Fragment>
     );
   }
 }
 
-export default connect()(App);
+export default connect(({ authedUser }) => {
+  return { authedUser };
+})(App);

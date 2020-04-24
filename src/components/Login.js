@@ -23,7 +23,7 @@ class Login extends React.Component {
         e.preventDefault();
         console.log(id);
         this.props.dispatch(authenticate(id));
-        this.props.history.push("/home");
+        // this.props.history.push("/home");
       };
   render() {
     const { users } = this.props;

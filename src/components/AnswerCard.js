@@ -40,7 +40,7 @@ class AnswerCard extends React.Component {
         loading: true
       });
       dispatch(handleAnswerQuestion(id, answerOption, authedUser));
-      // history.push(`/answerresults/${id}`);
+      history.push(`/answerresults/${id}`);
   
       this.setState({
         loading: false
