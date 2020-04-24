@@ -4,8 +4,9 @@ import App from "./components/App";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import middleware from "./middlewares";
+// import reducers from "./reducers"
 
-const store = createStore(middleware);
+const store = createStore( middleware);
 console.log("my store@@@", store.getState());
 
 ReactDOM.render(

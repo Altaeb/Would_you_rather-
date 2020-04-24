@@ -5,6 +5,7 @@ import { handleInitialData } from "../actions/shared";
 import Home from "./Home";
 import Login from "./Login";
 import NotFound from "./NotFoun";
+import AnswerCard from "./AnswerCard";
 
 class App extends React.Component {
   componentDidMount() {
@@ -19,6 +20,7 @@ class App extends React.Component {
             <Switch>
               <Route path="/" exact component={Login} />
               <Route path="/home" exact component={Home} />
+              <Route path="/answerquestion/:id" exact component={AnswerCard} />
               <Route component={NotFound} />
             </Switch>
           </div>

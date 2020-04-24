@@ -44,13 +44,15 @@ function answerQuestion(authedUser, qid, answer) {
   };
 }
 
-export function handleAnswerQuestion(authedUser, qid, answer) {
+export function handleAnswerQuestion(qid, answer, authedUser) {
+  console.log(qid, authedUser, answer);
   return dispatch => {
     return saveQuestionAnswer({
       qid,
       authedUser,
       answer
-    }).then(({ authedUser, qid, answer }) => {
+    }).then(data => {
+      console.log("data fro there ", data);
       dispatch(answerQuestion(authedUser, qid, answer));
       dispatch(handleAddAnswerToUser(authedUser, qid, answer));
     });

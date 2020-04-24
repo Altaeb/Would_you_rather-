@@ -28,14 +28,14 @@ class Question extends React.Component {
                 {!answered ? (
                   <NavLink
                     className="ui basic green button"
-                    to={`/answerCard/${question.id}`}
+                    to={`/answerquestion/${question.id}`}
                   >
                     <div>Answer</div>
                   </NavLink>
                 ) : (
                   <NavLink
                     className="ui basic blue button"
-                    to={`/reultsCard/${question.id}`}
+                    to={`/answerreults/${question.id}`}
                   >
                     <div>Check Answers</div>
                   </NavLink>

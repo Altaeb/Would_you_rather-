@@ -4,6 +4,13 @@ import { connect } from "react-redux";
 import { authenticate } from "../actions/authedUser";
 
 class Nav extends React.Component {
+  componentDidMount() {
+    const { authedUser, history } = this.props;
+    if (authedUser === null) {
+      history.push("/");
+    }
+  }
+
   handleLogout = e => {
     e.preventDefault();
     this.props.dispatch(authenticate(null));
@@ -19,15 +26,24 @@ class Nav extends React.Component {
           <Link to="/" className="item">
             Home
           </Link>
-          <Link className="item">Add Question</Link>
-          <Link className="item active">Leader Board</Link>
+          <Link to="/addquestion" className="item">
+            Add Question
+          </Link>
+          <Link to="/leaderboard" className="item ">
+            Leader Board
+          </Link>
 
           <div className="right item">
           <div className="ui item" onClick={e => this.handleLogout(e)}>
               Logout
             </div>
-            Elliot
-            <img className="ui  avatar image " src="avatars/sarahedo.png" />
+            <div>
+              {authedUser && authedUser.name}
+              <img
+                className="ui  avatar image "
+                src={authedUser && authedUser.avatarURL}
+              />
+            </div>
           </div>
         </div>
       </Fragment>
@@ -36,7 +52,7 @@ class Nav extends React.Component {
 }
 
 export default withRouter(
-  connect(({ authedUser }) => {
+  connect(({ authedUser, users }) => {
     return { authedUser };
   })(Nav)
 );
