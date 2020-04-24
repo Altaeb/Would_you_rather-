@@ -9,6 +9,7 @@ class ResultCard extends React.Component {
     const question = questions && questions[id];
 
     const author = question && users[question.author];
+
     let optionOneVotes = 0;
     let optionTwoVotes = 0;
     let optionOnePercentage = 0;
@@ -46,6 +47,7 @@ class ResultCard extends React.Component {
                 className="right floated mini ui image"
                 src={author ? author.avatarUR : undefined}
               />
+
               <div className="header">{author && author.name}</div>
               <div className="meta">
                 <h4>Asks: Would you rather: </h4>{" "}
@@ -57,9 +59,9 @@ class ResultCard extends React.Component {
                   <div className="ui raised segment">
                     <div style={{ paddingLeft: "1vw" }}>
                       {authedUserAnswer === "optionOne" && (
-                     <a className="ui teal right ribbon label">
+                        <a className="ui teal right ribbon label">
                           Your Answer
-                     </a>
+                        </a>
                       )}
                       <h3>
                         <span>{question && question.optionOne.text}</span>
@@ -101,7 +103,7 @@ class ResultCard extends React.Component {
                 <div className="ui raised segment">
                   <div style={{ paddingLeft: "1vw" }}>
                     {authedUserAnswer === "optionTwo" && (
-                     <a className="ui teal right ribbon label">Your Answer</a>
+                      <a className="ui teal right ribbon label">Your Answer</a>
                     )}
                     <h3>
                       <span>{question && question.optionTwo.text}</span>
@@ -146,7 +148,6 @@ class ResultCard extends React.Component {
 function mapStateToProps() {}
 
 export default connect(({ authedUser, questions, users }, props) => {
-
   return {
     questions,
     users: users ? users : null,

@@ -52,7 +52,6 @@ export function handleAnswerQuestion(qid, answer, authedUser) {
       authedUser,
       answer
     }).then(data => {
-      console.log("data fro there ", data);
       dispatch(answerQuestion(authedUser, qid, answer));
       dispatch(handleAddAnswerToUser(authedUser, qid, answer));
     });

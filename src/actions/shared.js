@@ -9,7 +9,7 @@ export function handleInitialData() {
     return getInitialData().then(({ users, questions }) => {
       dispatch(getUsers(users));
       dispatch(getQuestions(questions));
-      dispatch(showLoading());
+      dispatch(hideLoading());
     });
   };
 }

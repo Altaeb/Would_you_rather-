@@ -13,8 +13,8 @@ class AnswerCard extends React.Component {
 
   handleOptionChange = option => {
     this.setState({
-        answerOption: option,
-        error: false
+      answerOption: option,
+      error: false
     });
   };
 
@@ -26,24 +26,24 @@ class AnswerCard extends React.Component {
       authedUser,
       match: {
         params: { id }
-    },
-    dispatch,
-    history
+      },
+      dispatch,
+      history
     } = this.props;
-    
-    if (answerOption.trim() === "") {
-        return;
-      }
 
-      this.setState({
-        loading: true
-      });
-      dispatch(handleAnswerQuestion(id, answerOption, authedUser));
-      history.push(`/answerresults/${id}`);
-  
-      this.setState({
-        loading: false
-      });
+    if (answerOption.trim() === "") {
+      return;
+    }
+
+    this.setState({
+      loading: true
+    });
+    dispatch(handleAnswerQuestion(id, answerOption, authedUser));
+    history.push(`/answerresults/${id}`);
+
+    this.setState({
+      loading: false
+    });
   };
 
   render() {
@@ -64,10 +64,10 @@ class AnswerCard extends React.Component {
           <div
             className="card"
             style={{
-                width: "60vw",
-                marginLeft: "10vw",
-                marginRight: "-10vw"
-              }}
+              width: "60vw",
+              marginLeft: "10vw",
+              marginRight: "-10vw"
+            }}
           >
             <div className="content">
               <img
@@ -87,7 +87,7 @@ class AnswerCard extends React.Component {
                         name="answer"
                         value="optionOne"
                         onChange={e => this.handleOptionChange(e.target.value)}
-                    />{" "}
+                      />{" "}
                       {question.optionOne.text}
                     </h3>
                     <div className="ui horizontal divider">
@@ -99,7 +99,7 @@ class AnswerCard extends React.Component {
                         name="answer"
                         value="optionTwo"
                         onChange={e => this.handleOptionChange(e.target.value)}
-                    />{" "}
+                      />{" "}
                       {question.optionTwo.text} ?
                     </h3>{" "}
                     <br />
@@ -108,20 +108,21 @@ class AnswerCard extends React.Component {
               </div>
 
               <div className="extra content">
-              {question && (
+                {question && (
                   <div
                     className="ui two buttons"
                     to={`/answerCard/${question.id}`}
                   >
-                   <button
+                    <button
+                      disabled={this.state.error}
                       className={
                         `ui basic green button ` +
                         (this.state.loading ? "loading" : null)
                       }
                     >
                       <div onClick={e => this.handleSubmit(e)}>Submit</div>
-                   </button>
-                   </div>
+                    </button>
+                  </div>
                 )}
               </div>
             </div>

@@ -15,13 +15,14 @@ class Question extends React.Component {
             <img
               className="right floated mini ui image"
               src={auther.avatarURL}
+              Save
             />
             <div className="header">{auther.name}</div>
             <div className="meta">
               <h4>Asks: Would you rather : </h4>
             </div>
             <div className="description">
-            <h3>{question.optionOne.text} </h3>
+              <h3>{question.optionOne.text} </h3>
               <div className="ui horizontal divider">
                 <h5> OR </h5>
               </div>

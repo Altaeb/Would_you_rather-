@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
+
 import Nav from "./Nav";
 import Question from "./Question";
 import { NavLink } from "react-router-dom";
-
 
 class Home extends React.Component {
   state = {
@@ -22,12 +22,14 @@ class Home extends React.Component {
     this.setState({
       activeTab: name
     });
+    console.log(this.state.activeTab);
   };
 
   render() {
     const { activeTab } = this.state;
     const unansweredActive = activeTab === "unasnswered" ? "active" : "";
     const answeredActive = activeTab === "unasnswered" ? "" : "active";
+
     const { questions, users, authedUser } = this.props;
 
     const userAnswers = authedUser
@@ -42,11 +44,11 @@ class Home extends React.Component {
 
     return (
       <div>
-                <Nav />
+        <Nav />
 
-<br />
+        <br />
 
-<div
+        <div
           className="ui two top attached buttons"
           style={{
             width: "80vw!important",
@@ -54,20 +56,20 @@ class Home extends React.Component {
             marginRight: "10vw"
           }}
         >
-  <div
-    className={"ui button " + unansweredActive}
-    onClick={e => this.switchActivTab(e, "unasnswered")}
-  >
-    Unasnswered
-  </div>
-  <div
-    className={"ui button " + answeredActive}
-    onClick={e => this.switchActivTab(e, "asnswered")}
-  >
-    Ansnswered
-  </div>
-</div>
-<div
+          <div
+            className={"ui button " + unansweredActive}
+            onClick={e => this.switchActivTab(e, "unasnswered")}
+          >
+            Unasnswered
+          </div>
+          <div
+            className={"ui button " + answeredActive}
+            onClick={e => this.switchActivTab(e, "asnswered")}
+          >
+            Ansnswered
+          </div>
+        </div>
+        <div
           style={{
             width: "80vw!important",
             marginLeft: "10vw",
@@ -105,7 +107,7 @@ class Home extends React.Component {
           )}
         </div>
 
-<br></br>
+        <br></br>
       </div>
     );
   }

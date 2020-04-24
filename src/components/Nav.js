@@ -49,7 +49,7 @@ const Nav = props => {
             />
           </div>
         </div>
-        </div>
+      </div>
     </Fragment>
   );
 };
