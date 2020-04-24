@@ -1,15 +1,24 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Nav from "./Nav";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import Home from "./Home";
+import Login from "./Login";
+import NotFound from "./NotFoun";
 
 function App() {
   return (
-    <Router>
-    <div className="App">
+<Fragment>
       <Nav />
-      Would you rethar
-    </div>
-  </Router>
+      <Router>
+        <div className="App">
+          <Switch>
+            <Route path="/" exact component={Login} />
+            <Route path="/home" exact component={Home} />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+      </Router>
+    </Fragment>
   );
 }
 
