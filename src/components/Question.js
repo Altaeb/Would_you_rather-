@@ -14,12 +14,12 @@ class Question extends React.Component {
           <div className="content">
             <img
               className="right floated mini ui image"
-              src="/images/avatar/large/elliot.jpg"
+              src={auther.avatarURL}
             />
-            <div className="header">{auther}</div>
+            <div className="header">{auther.name}</div>
             <div className="meta">Asks: Would you rather : </div>
             <div className="description">
-              <h3>{question.optionOne.text} </h3> <p> OR </p>
+            <h3>{question.optionOne.text} </h3> <h5> OR </h5>
               <h3>{question.optionTwo.text} ?</h3> <br />
             </div>
 

@@ -1,4 +1,4 @@
-import { getInitialData } from "../reducers/dataAPI";
+import { getInitialData } from "../utils/dataAPI";
 import { getUsers } from "../actions/users";
 import { getQuestions } from "../actions/questions";
 import { showLoading, hideLoading } from "react-redux-loading";
