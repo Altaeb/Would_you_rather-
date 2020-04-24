@@ -35,7 +35,7 @@ class Question extends React.Component {
                 ) : (
                   <NavLink
                     className="ui basic blue button"
-                    to={`/answerreults/${question.id}`}
+                    to={`/answerresults/${question.id}`}
                   >
                     <div>Check Answers</div>
                   </NavLink>
