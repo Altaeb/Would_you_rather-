@@ -3,11 +3,13 @@ import Nav from "./Nav";
 import { connect } from "react-redux";
 import { handleAnswerQuestion } from "../actions/questions";
 import { withRouter } from "react-router-dom";
+import { dispatch } from "rxjs/internal/observable/pairs";
 
 class AnswerCard extends React.Component {
   state = {
     answerOption: "",
-    error: true
+    error: true,
+    loading: false
   };
 
   handleOptionChange = option => {
@@ -25,16 +27,24 @@ class AnswerCard extends React.Component {
       authedUser,
       match: {
         params: { id }
-      }
+    },
+    dispatch,
+    history
     } = this.props;
     
     if (answerOption.trim() === "") {
         return;
       }
 
-    console.log("before dispatch");
-    this.props.dispatch(handleAnswerQuestion(id, answerOption, authedUser));
-    this.props.history.push(`/answerresults/${id}`);
+      this.setState({
+        loading: true
+      });
+      dispatch(handleAnswerQuestion(id, answerOption, authedUser));
+      // history.push(`/answerresults/${id}`);
+  
+      this.setState({
+        loading: false
+      });
   };
 
   render() {
@@ -94,17 +104,21 @@ class AnswerCard extends React.Component {
               </div>
 
               <div className="extra content">
-                <div className="ui two buttons">
-                  {question && (
+              {question && (
+                  <div
+                    className="ui two buttons"
+                    to={`/answerCard/${question.id}`}
+                  >
                    <button
-                    disabled={this.state.error}
-                      className="ui basic green button"
-                      to={`/answerCard/${question.id}`}
+                      className={
+                        `ui basic green button ` +
+                        (this.state.loading ? "loading" : null)
+                      }
                     >
                       <div onClick={e => this.handleSubmit(e)}>Submit</div>
                    </button>
-                  )}
-                </div>
+                   </div>
+                )}
               </div>
             </div>
           </div>

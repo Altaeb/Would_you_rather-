@@ -58,6 +58,9 @@ class AddQuestion extends React.Component {
             className="card"
             style={{ width: "60vw", marginLeft: "10vw", marginRight: "-10vw" }}
           >
+            <div style={{ padding: "10px" }}>
+              <h4>Would You Rather: </h4>
+            </div>
             <div className="content">
               <form className="ui form">
                 <div className="field">

@@ -44,7 +44,7 @@ class ResultCard extends React.Component {
             <div className="content">
               <img
                 className="right floated mini ui image"
-                src={author && author.avatarURL}
+                src={author ? author.avatarUR : undefined}
               />
               <div className="header">{author && author.name}</div>
               <div className="meta">

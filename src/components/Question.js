@@ -33,7 +33,7 @@ class Question extends React.Component {
                 {!answered ? (
                   <NavLink
                     className="ui basic green button"
-                    to={`/answerquestion/${question.id}`}
+                    to={`/questions/${question.id}`}
                   >
                     <div>Answer</div>
                   </NavLink>

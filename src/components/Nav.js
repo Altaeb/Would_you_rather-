@@ -60,7 +60,7 @@ class Nav extends React.Component {
             {authedUser !== null && users[authedUser].name}
               <img
                 className="ui  avatar image "
-                src={authedUser !== null && users[authedUser].avatarURL}
+                src={authedUser ? users[authedUser].avatarURL : undefined}
               />
             </div>
           </div>
