@@ -21,7 +21,10 @@ class Question extends React.Component {
               <h4>Asks: Would you rather : </h4>
             </div>
             <div className="description">
-            <h3>{question.optionOne.text} </h3> <h5> OR </h5>
+            <h3>{question.optionOne.text} </h3>
+              <div className="ui horizontal divider">
+                <h5> OR </h5>
+              </div>
               <h3>{question.optionTwo.text} ?</h3> <br />
             </div>
 

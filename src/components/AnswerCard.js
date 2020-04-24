@@ -76,7 +76,9 @@ class AnswerCard extends React.Component {
                     />{" "}
                       {question.optionOne.text}
                     </h3>
-                    <h5> OR </h5>
+                    <div className="ui horizontal divider">
+                      <h5> OR </h5>
+                    </div>
                     <h3>
                       <input
                         type="radio"

@@ -18,25 +18,44 @@ class Nav extends React.Component {
   };
 
   render() {
-    const { authedUser, users } = this.props;
-
+    const { authedUser, users, history } = this.props;
+    const { pathname } = history.location;
     return (
       <Fragment>
         <div className="ui secondary pointing menu">
-          <Link to="/" className="item">
+        <Link
+            to="/"
+            className={`item ` + (pathname === "/home" ? "active" : null)}
+          >
             Home
           </Link>
-          <Link to="/addquestion" className="item">
+          <Link
+            to="/addquestion"
+            className={
+              `item ` + (pathname === "/addquestion" ? "active" : null)
+            }
+          >
+            {" "}
             Add Question
           </Link>
-          <Link to="/leaderboard" className="item ">
+          <Link
+            to="/leaderboard"
+            className={
+              `item ` + (pathname === "/leaderboard" ? "active" : null)
+            }
+          >
             Leader Board
           </Link>
 
           <div className="right item">
-          <div className="ui item" onClick={e => this.handleLogout(e)}>
+          <div
+              className="ui  button"
+              style={{ marginRight: "5px" }}
+              onClick={e => this.handleLogout(e)}
+            >
               Logout
             </div>
+
             <div>
             {authedUser !== null && users[authedUser].name}
               <img
@@ -53,6 +72,6 @@ class Nav extends React.Component {
 
 export default withRouter(
   connect(({ authedUser, users }) => {
-    rreturn { authedUser, users };
+    return { authedUser, users };
   })(Nav)
 );

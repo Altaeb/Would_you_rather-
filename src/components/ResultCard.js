@@ -94,7 +94,10 @@ class ResultCard extends React.Component {
                     </div>
                   </div>
                 </div>
-                <h3 style={{ marginLeft: "25vw" }}> OR </h3>
+                <div className="ui horizontal divider">
+                  {" "}
+                  <h3> OR </h3>
+                </div>
                 <div className="ui raised segment">
                   <div style={{ paddingLeft: "1vw" }}>
                     {authedUserAnswer === "optionTwo" && (

@@ -42,9 +42,18 @@ class Login extends React.Component {
                       className="ui card center "
                       style={{ minWidth: "300px" }}
                     >
+                    {" "}
+                    <div style={{ padding: "10px", paddingTop: "12px" }}>
+                      <h4>Welcome to the Would You Rather App!</h4>
+                    </div>
                       <div className="content" style={{ minHeight: "250px" }}>
-                        Welcome to the Would You Rather App! Please select user to
-                        continue
+                      <div className="image">
+                        {" "}
+                        <img
+                          src="/logo.jpg"
+                          style={{ width: "250px", height: "250px" }}
+                        />{" "}
+                      </div>
                       </div>
                       <div className="content">
                         <div className="extra content">
@@ -52,7 +61,7 @@ class Login extends React.Component {
                           <form className="ui form">
                             <div className="ui compact menu">
                               <div className="ui simple dropdown item">
-                                Select User To Start
+                                Select user to start
                                 <i className="dropdown icon"></i>
                                 <div className="menu">
                                 {users.map(user => {
@@ -66,7 +75,7 @@ class Login extends React.Component {
                                     >
                                       <img
                                         className="ui avatar image"
-                                        src={user.avatarURL}
+                                        src={user && user.avatarURL}
                                       />
                                       {user.name}
                                     </div>
